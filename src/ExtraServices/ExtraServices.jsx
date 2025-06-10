@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { extraServices } from "./extraServicesData";
 import './ExtraServices.css'
 import parse from 'html-react-parser';
+import arrowUp from "../images/arrow-up.png"
+import questionImg from '../images/question.png'
 
 const ExtraServices = ({selectedServices, setSelectedServices}) => {
 
@@ -50,7 +52,7 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
             <div className="services__header">
                 <h2 className="section__title">Дополнительные услуги</h2>
                 <div className="services__header-up">
-                    <img src="/images/arrow-up.png" alt="arrow-up" />
+                    <img src={arrowUp} alt="arrow-up" />
                 </div>
             </div>
             
@@ -68,7 +70,7 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
                             <div className="service__info">
                             <div className="title-row">
                                 <div className="service-title"><span>{service.title}</span>
-                                 <img src="/images/question.png" alt="question" className="title-row--question" 
+                                 <img src={questionImg} alt="question" className="title-row--question" 
                                 onClick={() => toggleDescription(service.id)}
                                  />    
                                     </div> 

@@ -1,5 +1,7 @@
 import React from 'react'
 import './WeekControls.css'
+import arrowLeft from '../images/arrow-left.png'
+import arrowRight from '../images/arrow-right.png'
 
 const WeekControls = ({week, onPrev, onNext}) => {
     if (!week || week.length === 0) return null;
@@ -9,9 +11,9 @@ const WeekControls = ({week, onPrev, onNext}) => {
 
     return(
         <div className="week__nav">
-            <button onClick={onPrev}><img src='/images/arrow-left.png' alt="arrow-right" /></button>
+            <button onClick={onPrev}><img src={arrowLeft} alt="arrow-right" /></button>
             <span>{start} &mdash; {end}</span>
-            <button onClick={onNext}><img src='/images/arrow-right.png' alt="arrow-right" /></button>
+            <button onClick={onNext}><img src={arrowRight} alt="arrow-right" /></button>
         </div>
     )
 }

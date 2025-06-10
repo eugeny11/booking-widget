@@ -1,10 +1,14 @@
+import tripodImage from '../images/services__tripod.jpg'
+import lightImage from '../images/services__light.jpg'
+import backgroundImage from '../images/services__background.jpg'
+
 export const extraServices = [
   {
     id: "light",
     title: "Видеосвет Godox sl200ii",
     price: 400,
     unit: "₽/час",
-    image: "/images/services__light.jpg",
+    image: lightImage,
     description: "Светодиодный холодный постоянный источник света, чтобы дать вам еще больше возможностей сценариев освещения.",
    full_description: `
         <p>1.Универсальный штатив, который послужит надёжным дополнением к вашей камере,
@@ -19,7 +23,7 @@ export const extraServices = [
     title: "Штатив для камеры",
     price: 100,
     unit: "₽/час",
-    image: "/images/services__tripod.jpg",
+    image: tripodImage,
     description: "Универсальный штатив, который послужит надежным дополнением к вашей камере, обеспечит удобство съёмки и более качественные фотографии или видео.",
     full_description: `
       <p>2.Универсальный штатив, который послужит надёжным дополнением к вашей камере,
@@ -33,7 +37,7 @@ export const extraServices = [
     title: "Шелковый, жемчужный фон",
     price: 600,
     unit: "₽ установка",
-    image: "/images/services__background.jpg",
+    image: backgroundImage,
     description: "Для самых изысканных и утончённых фото. Добавьте различные детали, мебель и стильную, уникальную локацию готова.",
     full_description: `
       <p>3.Универсальный штатив, который послужит надёжным дополнением к вашей камере,
