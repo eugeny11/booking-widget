@@ -1,0 +1,128 @@
+export const mockCalendarWeek = [
+  {
+    day: "Пн",
+    date: "2025-04-21",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "free" },
+      { time: "11:00", price: 1600, status: "free" },
+      { time: "12:00", price: 1600, status: "free" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  },
+  {
+    day: "Вт",
+    date: "2025-04-22",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "free" },
+      { time: "11:00", price: 1600, status: "free" },
+      { time: "12:00", price: 1600, status: "free" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  },
+  {
+    day: "Ср",
+    date: "2025-04-23",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "selected" },
+      { time: "11:00", price: 1600, status: "selected" },
+      { time: "12:00", price: 1600, status: "occupied" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  },
+  {
+    day: "Чт",
+    date: "2025-04-24",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "free" },
+      { time: "11:00", price: 1600, status: "free" },
+      { time: "12:00", price: 1600, status: "free" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  },
+  {
+    day: "Пт",
+    date: "2025-04-25",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "free" },
+      { time: "11:00", price: 1600, status: "free" },
+      { time: "12:00", price: 1600, status: "free" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  },
+  {
+    day: "Сб",
+    date: "2025-04-26",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "free" },
+      { time: "11:00", price: 1600, status: "free" },
+      { time: "12:00", price: 1600, status: "free" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  },
+  {
+    day: "Вс",
+    date: "2025-04-27",
+    slots: [
+      { time: "08:00", price: 1600, status: "free" },
+      { time: "09:00", price: 1600, status: "free" },
+      { time: "10:00", price: 1600, status: "free" },
+      { time: "11:00", price: 1600, status: "free" },
+      { time: "12:00", price: 1600, status: "free" },
+      { time: "13:00", price: 1600, status: "free" },
+      { time: "14:00", price: 1600, status: "free" },
+      { time: "15:00", price: 1600, status: "free" },
+      { time: "16:00", price: 1600, status: "free" },
+      { time: "17:00", price: 1600, status: "free" },
+      { time: "18:00", price: 1600, status: "free" },
+      { time: "19:00", price: 1600, status: "free" },
+    ]
+  }
+];

@@ -1,0 +1,20 @@
+.week__nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.week__nav button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #dcdee3;
+  padding: 10px 0;
+}
+
+.week__nav button img {
+  width: 10px;
+}
