@@ -13,14 +13,18 @@ import OrderForm from './OrderForm/OrderForm';
 function App() {
 
   const [weekData, setWeekData] = useState([]);
+  const [initialWeekStart, setInitialWeekStart] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [currentDate, setCurrentDate] = useState('2025-04-21')
 
   useEffect(() => {
-    fetchWeek(currentDate).then(data => {
-      setWeekData(data)
-    })
-  })
+  fetchWeek(currentDate).then((data) => {
+    setWeekData(data);
+    if (!initialWeekStart) {
+      setInitialWeekStart(data[0].date);
+    }
+  });
+}, [currentDate]);
 
   const shiftWeek = (days) => {
     const newDate = new Date(currentDate);
@@ -43,7 +47,6 @@ function App() {
     };
 
   const slotPrice = 1600;
-  const isDiscount = selectedSlots.length >= 3;
    const baseTotal = selectedSlots?.length * slotPrice;
 
    const extrasTotal = selectedServices?.reduce((sum,service) => sum + service.price, 0);
@@ -80,18 +83,22 @@ function App() {
               />
               <WeekControls 
               week={weekData}
+              initialWeekStart={initialWeekStart}
               onPrev={() => shiftWeek(-7)}
               onNext={() => shiftWeek(7)}
               />
               {weekData.length > 0 ? (
-                <CalendarTable week={weekData} 
-                selectedSlots={selectedSlots}
-                setSelectedSlots={setSelectedSlots}
-                getTimeEnd={getTimeEnd}
-                />
+                <div key={weekData[0].date} className="calendar-transition">
+                  <CalendarTable
+                    week={weekData}
+                    selectedSlots={selectedSlots}
+                    setSelectedSlots={setSelectedSlots}
+                    getTimeEnd={getTimeEnd}
+                 />
+                </div>
               ) : (
-          <div>Загрузка календаря...</div>
-            )}
+                <div>Загрузка календаря...</div>
+              )}
             <BookingPurpose 
               selectedGoal={selectedGoal}
               setSelectedGoal={setSelectedGoal}
@@ -109,7 +116,6 @@ function App() {
               guestCount={guestCount}
               getTimeEnd={getTimeEnd}
               baseTotal={baseTotal}
-              isDiscount={isDiscount}
               total={total}
               />
               <OrderForm

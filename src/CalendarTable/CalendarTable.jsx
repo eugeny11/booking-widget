@@ -27,6 +27,17 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
         return newSlot.slotIndex === minIndex - 1 || newSlot.slotIndex === maxIndex + 1;
     }
 
+    const isMiddleSlot = (slot, slots) => {
+        const sameDaySlots = slots.filter(s => s.date === slot.date)
+        if (sameDaySlots.length < 3) return false;
+
+        const indices = sameDaySlots.map(s => s.slotIndex).sort((a, b) => a - b);
+        const min = indices[0];
+        const max = indices[indices.length - 1];
+
+        return slot.slotIndex > min && slot.slotIndex < max;
+    }
+
     const addOneHour = (time) => {
     const [hour, minute] = time.split(':').map(Number);
     const newHour = (hour + 1) % 24;
@@ -49,11 +60,17 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
         const alreadySelected = isSelected(slot.date, slot.time);
 
         let newSelectedSlots;
-        if (alreadySelected){
-            newSelectedSlots = selectedSlots.filter(
-                s => !(s.date === slot.date && s.time === slot.time)
-            );
-        } else if(canAddSlot(slot, selectedSlots)){
+       if (alreadySelected) {
+          
+            if (isMiddleSlot(slot, selectedSlots)) {
+                newSelectedSlots = [];
+            } else {
+                // иначе просто снимаем его (если это крайний)
+                newSelectedSlots = selectedSlots.filter(
+                    s => !(s.date === slot.date && s.time === slot.time)
+                );
+            }
+        }else if(canAddSlot(slot, selectedSlots)){
             newSelectedSlots = [...selectedSlots, slot]
         } else {
             newSelectedSlots = [slot]

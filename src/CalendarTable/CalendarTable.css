@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 .day-header {
@@ -63,13 +64,10 @@
   cursor: pointer;
 }
 
-.slot.occupied {
+.slot:hover {
   background-color: #e3f8ff;
   color: #50acf2;
   border-color: #74ddff;
-  font-size: 11px;
-  padding: 8px 0;
-  line-height: 1;
 }
 
 .calendar-cell.day-header, .calendar-cell.empty, .calendar-cell.time-table{
@@ -92,10 +90,14 @@
    line-height: 1.1;
 }
 
-.calendar-cell .slot.selected{
-  border-color: #74ddff;
-   line-height: 1.1;
+.slot.occupied{
+  background-color: transparent;
+  color: transparent;
+  font-size: 11px;
+  padding: 8px 0;
 }
+
+.slot.occupied:hover{background-color: transparent;}
 
 .price__info{
   margin-top: 15px;
@@ -124,6 +126,21 @@
 .calendar__note img{
   width: 15px;
   height: 15px;
+}
+
+.calendar-transition {
+  animation: fadeSlideIn 0.2s ease;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media only screen and (max-width: 680px){
@@ -159,7 +176,5 @@
   .calendar__note{
     font-size: 12px;
   }
-  .slot.selected, .slot.occupied{
-    font-size: 11px;
-  }
+
 }

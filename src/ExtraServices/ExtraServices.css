@@ -123,6 +123,30 @@
   display: none;
 }
 
+.services__column-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+
+.services__column-wrapper.open {
+  max-height: 2000px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.services__header-up img {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.services__header-up img.rotated {
+  transform: rotate(180deg);
+}
+
+
 @media only screen and (max-width: 680px){
 
     .extra__services{

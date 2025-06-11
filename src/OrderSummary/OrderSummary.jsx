@@ -1,7 +1,7 @@
 import React from "react";
 import './OrderSummary.css'
 
-const OrderSummary = ({hall, selectedSlots, selectedServices, guestCount, getTimeEnd, baseTotal, isDiscount, total}) => {
+const OrderSummary = ({hall, selectedSlots, selectedServices, guestCount, getTimeEnd, baseTotal, total}) => {
 
   const sortedSlots = [...selectedSlots].sort((a, b) => {
   if (a.date !== b.date) return a.date.localeCompare(b.date);
@@ -62,19 +62,9 @@ const last = sortedSlots[sortedSlots.length - 1];
                 <div className="order-total">
   <span>Общая сумма заказа</span>
   <span>
-    {isDiscount
-      ? (
-        <>
-          <div>{Math.round(total)} ₽</div>
-          <div style={{ fontSize: "0.9em", color: "#888" }}>
-            Скидка 20%
-          </div>
-        </>
-      )
-      : (
-        Number.isFinite(total) && total > 0 ? `${Math.round(total)} ₽` : "—"
-      )
-    }
+    
+       {Number.isFinite(total) && total > 0 ? `${Math.round(total)} ₽` : "—"}
+    
   </span>
 </div>
 
