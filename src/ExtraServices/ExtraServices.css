@@ -181,10 +181,15 @@
     .services__mobile-description{
       display: block;
       font-size: 14px;
-      padding: 16px 20px;
       max-width: 400px;
       width: 100%;
+      color: #000;
     }
+
+    .service__item{
+      flex-wrap: wrap;
+    }
+
 
    .service__item img{
     width: 100px;
@@ -223,11 +228,22 @@
    .service-total{
     display: flex;
     justify-content: center;
-    padding: 10px 25px;
+    padding: 10px 20px;
     background: #f1f3fb;
     border-radius: 15px;
     border-top: 1px solid #e5e5e9;
    }
+}
+
+@media only screen and (max-width: 520px){
+  .service-title {
+    align-items: start;
+  }
+
+  .service-title span {
+    max-width: 185px;
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 350px){

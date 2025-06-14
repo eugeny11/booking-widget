@@ -41,6 +41,18 @@ const OrderForm = ({total, onSubmit}) => {
         total * (formData.prepayType === "50" ? 0.5 : 1)
     )
 
+   const [promo, setPromo] = useState('');
+    const [promoValid, setPromoValid] = useState(null);
+    const validCodes = ['SAVE10', 'FOTO']; 
+
+  const handlePromoChange = (e) => {
+  const value = e.target.value;
+  setPromo(value);
+
+  const isValid = validCodes.includes(value.trim().toUpperCase());
+  setPromoValid(isValid);
+};
+
     return (
     <form className="order-form" onSubmit={handleSubmit}>
       <div className="order-form__header">
@@ -80,18 +92,28 @@ const OrderForm = ({total, onSubmit}) => {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              required
             />
           </div>
 
-          <div className="field-group">
+          
+            <div className="field-group field-group--promo">
             <label>Промокод</label>
-            <input
-              type="text"
-              name="promo"
-              value={formData.promo}
-              onChange={handleChange}
-            />
-          </div>
+              <div className="promo__flex">
+                  <input
+                      className="input-promo"
+                      type="text"
+                      value={promo}
+                      onChange={handlePromoChange}
+                    />
+                    <div className="promo-valid">
+                     <span>{promoValid === true ? '✔️' : '\u2007'}</span> 
+                    </div>
+              </div> 
+             </div>
+          
+          
+          
 
           <div className="field-group field-group--commentary">
             <label>Комментарий</label>

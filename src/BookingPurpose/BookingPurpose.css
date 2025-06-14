@@ -95,7 +95,6 @@
 }
 
 .goal-btn.active {
-  border-color: #007bff;
   background-color: #f1f3fb;
 }
 
@@ -171,6 +170,25 @@
     align-items: center;
   }
   
+}
+
+@media only screen and (max-width: 520px){
+
+  .goal__options {
+    margin-left: 8px;
+  }
+
+  .order-form__left{
+    align-content: start;
+  }
+
+  .goal__selector{
+    max-width: 350px;
+  }
+
+  .goal-btn{
+    max-width: 100px;
+  }
 }
 
 @media only screen and (max-width: 450px){

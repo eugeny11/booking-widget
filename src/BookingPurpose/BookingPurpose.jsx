@@ -26,8 +26,8 @@ const BookingPurpose = ({selectedGoal, setSelectedGoal, guestCount, setGuestCoun
                     {goals.map(goal => (
                         <button
                         key={goal.id}
-                        className={`goal-btn ${goal.id === selectedGoal ? "active" : ""}`}
-                        onClick={() => setSelectedGoal(goal.id)}
+                        className={`goal-btn ${goal.id === selectedGoal.id ? "active" : ""}`}
+                        onClick={() => setSelectedGoal({id: goal.id, label:goal.label})}
                         >
                             <span>{goal.label}</span>
                         </button>

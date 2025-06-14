@@ -1,7 +1,7 @@
 import React from "react";
 import './OrderSummary.css'
 
-const OrderSummary = ({hall, selectedSlots, selectedServices, guestCount, getTimeEnd, baseTotal, total}) => {
+const OrderSummary = ({hall, selectedSlots, selectedServices, guestCount, getTimeEnd, baseTotal, total, goal}) => {
 
   const sortedSlots = [...selectedSlots].sort((a, b) => {
   if (a.date !== b.date) return a.date.localeCompare(b.date);
@@ -32,7 +32,7 @@ const last = sortedSlots[sortedSlots.length - 1];
                     </div>
                    
                 ) : (
-                    <div>
+                    <div className="order-date-time">
                     <div>Дата: </div>
                     <div>Время: </div>
                     </div>
@@ -44,14 +44,13 @@ const last = sortedSlots[sortedSlots.length - 1];
                 
             </div>
             <div className="right">
-                <div><span>Фотосъёмка</span><span>{baseTotal}</span></div>
+                <div><span className="goal-name">{goal.label}</span><span>{baseTotal}</span></div>
                 {selectedServices?.map(service => (
                     <div
                     key={service.id}
                     className="right-service"
                     >
-                        <span>{service.title}  </span> x 
-                        <span> {service.count} </span>
+                        <span> {service.title} </span>  
                         <span> {service.price} </span> 
                         
                         </div>

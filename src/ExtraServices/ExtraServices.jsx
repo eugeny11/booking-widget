@@ -75,7 +75,8 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
 
                             return(
                                 <div className="service__item" key={service.id}>
-                                    <img src={service.image} alt={service.title} />
+                                    
+                                        <img src={service.image} alt={service.title} />
                                     <div className="service__flex">
                                         <div className="service__info">
                                         <div className="title-row">
@@ -97,7 +98,6 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
 
                                         <p className="service-description">{service.description}</p>
                                     </div>
-
                                     <div className="service__control">
                                         <div className="counter">
                                             <button onClick={() => updateService(service.id, count - 1)}>−</button>
@@ -107,19 +107,24 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
                                         <div className="service-total"><span className="service-total-count">+</span> {total} ₽</div>
                                     </div>
                                     </div>
-
                                     
 
-                                </div>
+                                    
+                               
+                                            <div className={`services__mobile-description-wrapper ${activeDescriptionId === service.id ? 'open' : ''}`}>
+                                                <div className="services__mobile-description">
+                                                    {activeDescriptionId === service.id ? (
+                                                    service.full_description && service.full_description.trim() !== "" 
+                                                        ? parse(service.full_description) 
+                                                        : <em>Нет описания</em>
+                                                    ) : null}
+                                                </div>
+                                            </div>
+
+                            </div>
                             )
                         })}
-                            <div className={`services__mobile-description-wrapper ${activeDescriptionId ? 'open' : ''}`}>
-                                <div className="services__mobile-description">
-                                    {activeDescriptionId && (
-                                    parse(extraServices.find(s => s.id === activeDescriptionId)?.full_description || "")
-                                    )}
-                                </div>
-                            </div>
+                            
                         </div>
             </div>
            

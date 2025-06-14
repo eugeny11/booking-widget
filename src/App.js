@@ -26,6 +26,13 @@ function App() {
   });
 }, [currentDate]);
 
+useEffect(() => {
+  document.body.classList.add('modal-open');
+  return () => {
+    document.body.classList.remove('modal-open');
+  };
+}, []);
+
   const shiftWeek = (days) => {
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() + days);
@@ -34,7 +41,7 @@ function App() {
 
   const [selectedHall, setSelectedHall] = useState(halls[1]);
 
-  const [selectedGoal, setSelectedGoal] = useState("фотосъёмка");
+  const [selectedGoal, setSelectedGoal] = useState({});
   const [guestCount, setGuestCount] = useState(8)
 
   const [selectedServices, setSelectedServices] = useState([])
@@ -73,58 +80,68 @@ function App() {
 
 
   return (
-    <div className='App'>
-      <div className='container'>
-                <h1>Бронирование зала</h1>
-              <HallSlider 
-              halls={halls}
-              selectedHall={selectedHall}
-              onSelect={setSelectedHall}
-              />
-              <WeekControls 
-              week={weekData}
-              initialWeekStart={initialWeekStart}
-              onPrev={() => shiftWeek(-7)}
-              onNext={() => shiftWeek(7)}
-              />
-              {weekData.length > 0 ? (
-                <div key={weekData[0].date} className="calendar-transition">
-                  <CalendarTable
+    <div className='modal-overlay'>
+      <div className="modal-content">
+        <button className="modal-close" onClick={() => console.log("Закрыть")}>×</button>
+        <div className="modal-scroll-area">
+          <div className='App'>
+            <div className='container'>
+                      <h1>Бронирование зала</h1>
+                    <HallSlider 
+                    halls={halls}
+                    selectedHall={selectedHall}
+                    onSelect={setSelectedHall}
+                    />
+                    <WeekControls 
                     week={weekData}
+                    initialWeekStart={initialWeekStart}
+                    onPrev={() => shiftWeek(-7)}
+                    onNext={() => shiftWeek(7)}
+                    />
+                    {weekData.length > 0 ? (
+                      <div key={weekData[0].date} className="calendar-transition">
+                        <CalendarTable
+                          week={weekData}
+                          selectedSlots={selectedSlots}
+                          setSelectedSlots={setSelectedSlots}
+                          getTimeEnd={getTimeEnd}
+                      />
+                      </div>
+                    ) : (
+                      <div>Загрузка календаря...</div>
+                    )}
+                  <BookingPurpose 
+                    selectedGoal={selectedGoal}
+                    setSelectedGoal={setSelectedGoal}
+                    guestCount={guestCount}
+                    setGuestCount={setGuestCount}
+                    />
+                    <ExtraServices 
+                    selectedServices={selectedServices}
+                    setSelectedServices={setSelectedServices}
+                    />
+                    <OrderSummary 
+                    hall={selectedHall}
+                    goal={selectedGoal}
                     selectedSlots={selectedSlots}
-                    setSelectedSlots={setSelectedSlots}
+                    selectedServices={selectedServices}
+                    guestCount={guestCount}
                     getTimeEnd={getTimeEnd}
-                 />
-                </div>
-              ) : (
-                <div>Загрузка календаря...</div>
-              )}
-            <BookingPurpose 
-              selectedGoal={selectedGoal}
-              setSelectedGoal={setSelectedGoal}
-              guestCount={guestCount}
-              setGuestCount={setGuestCount}
-              />
-              <ExtraServices 
-              selectedServices={selectedServices}
-              setSelectedServices={setSelectedServices}
-              />
-              <OrderSummary 
-              hall={selectedHall}
-              selectedSlots={selectedSlots}
-              selectedServices={selectedServices}
-              guestCount={guestCount}
-              getTimeEnd={getTimeEnd}
-              baseTotal={baseTotal}
-              total={total}
-              />
-              <OrderForm
-              total={total}
-              onSubmit={handleBooking}
-              />
-      </div>
+                    baseTotal={baseTotal}
+                    total={total}
+                    />
+                    <OrderForm
+                    total={total}
+                    onSubmit={handleBooking}
+                    />
+            </div>
      
+        </div>
+        </div>
+        
+      </div>
     </div>
+    
     );
   }
 
