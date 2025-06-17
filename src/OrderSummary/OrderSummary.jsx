@@ -16,7 +16,10 @@ const last = sortedSlots[sortedSlots.length - 1];
     <div className="order__wrapper">
         
         <div className="order__summary">
-            <h2 className="section__title">Детали заказа</h2>
+            <div className="order__header">
+                <h2 className="section__title">Детали заказа</h2>
+            </div>
+            
         <div className="order__flex">
             <div className="left">
                 {hall && <img src={hall.image} alt={hall.name} />}
@@ -44,14 +47,14 @@ const last = sortedSlots[sortedSlots.length - 1];
                 
             </div>
             <div className="right">
-                <div><span className="goal-name">{goal.label}</span><span>{baseTotal}</span></div>
+                <div><span className="goal-name">{goal.label}</span><span>{baseTotal} ₽</span></div>
                 {selectedServices?.map(service => (
                     <div
                     key={service.id}
                     className="right-service"
                     >
                         <span> {service.title} </span>  
-                        <span> {service.price} </span> 
+                        <span> {service.price} ₽ </span> 
                         
                         </div>
                 ))}
@@ -59,12 +62,12 @@ const last = sortedSlots[sortedSlots.length - 1];
                     <div><span>Аренда, свыше 7 человек</span> <span>500 ₽</span></div>
                 )}
                 <div className="order-total">
-  <span>Общая сумма заказа</span>
-  <span>
-    
-       {Number.isFinite(total) && total > 0 ? `${Math.round(total)} ₽` : "—"}
-    
-  </span>
+                    <span>Общая сумма заказа</span>
+                    <span className="order-total-number">
+                        
+                        {Number.isFinite(total) && total > 0 ? `${Math.round(total)} ₽` : "—"}
+                        
+                    </span>
 </div>
 
             </div>

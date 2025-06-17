@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import "./HallSlider.css";
+import checkmark from '../images/checkmark.png'
 
 const HallSlider = ({ halls, selectedHall, onSelect }) => {
 
   const [isJumping, setIsJumping] = useState(false);
   
-  const CARD_WIDTH = 212;
+  const CARD_WIDTH = 205;
   const duplicated = [...halls, ...halls, ...halls];
   const middleOffset = halls.length * CARD_WIDTH;
 
@@ -56,10 +57,10 @@ const HallSlider = ({ halls, selectedHall, onSelect }) => {
   if (xOffset >= maxOffset - CARD_WIDTH || xOffset <= totalWidth) {
     const realIndex = getRealIndex(xOffset);
     const newOffset = middleOffset + (realIndex * CARD_WIDTH);
-    setIsJumping(true); // временно отключим анимацию
+    setIsJumping(true); 
     setXOffset(newOffset);
 
-    setTimeout(() => setIsJumping(false), 20); // включим анимацию обратно через 1 тик
+    setTimeout(() => setIsJumping(false), 20); 
   }
 };
 
@@ -108,9 +109,11 @@ const handleTouchEnd = (e) => {
               className={`hall-card ${hall.id === selectedHall.id ? "selected" : ""}`}
               onClick={() => handleClick(index)}
             >
-              <img src={hall.image} alt={hall.name} />
+             <div className="hall-image">
+                <img className="hall-card-img" src={hall.image} alt={hall.name} />
+            </div>
               <div className="hall-name">
-                {hall.name} {hall.id === selectedHall.id && <span>✔</span>}
+               <span>{hall.name}</span>  {hall.id === selectedHall.id && <img src={checkmark} alt="checkmark"/>}
               </div>
             </div>
           ))}

@@ -2,31 +2,74 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 0 20px;
   overflow-x: auto;
   font-family: sans-serif;
   background: #fff;
   color: #1f1f1f;
 }
 
-.calendar__body{
-  background: #f1f3fb;
+.calendar__grid {
+  display: flex;
+  flex-direction: column;
 }
 
-.calendar__header,
+.calendar__header {
+  display: flex;
+  margin-left: 0; /* убираем, если был */
+}
+
+.empty {
+  width: 55px; 
+}
+
+.calendar__main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Отдельный левый столбец */
+.calendar__times {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.calendar__body{
+  max-width: 610px;
+   border-radius: 12px / 10px;
+   border: 2px solid #dde4fd;
+  padding: 0 4px;
+  width: 100%;
+  background: #f1f3fb;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.calendar-cell.day-header {
+  max-width: 87px;
+  width: 100%;
+  text-align: center;
+}
+
 .calendar-row {
   display: flex;
-  gap: 4px;
+  gap: 2px;
 }
 
 .calendar-cell {
-  margin-top: 4px;
-  padding: 13px 0;
+  padding: 15px 0;
   justify-content: center;
-  max-width: 86px;
+  max-width: 84px;
   width: 100%;
-  border-radius: 12px;
-  font-size: 14px;
-  border: 2px solid #d3d3d3;
+  max-height: 40px;
+  height: 100%;
+  border-radius: 12px / 10px;
+  font-size: 12px;
+  border: 1px solid #d3d3d3;
   color: #616161;
   word-wrap: break-word;
   white-space: normal;
@@ -37,8 +80,14 @@
   cursor: pointer;
 }
 
+.calendar__body .calendar-cell {
+  margin-top: 2px;
+}
+
+
+
 .day-header {
-  font-weight: bold;
+  font-weight: 700;
   gap: 5px;
   flex-direction: row;
 }
@@ -48,6 +97,11 @@
   font-size: 13px;
   text-transform: lowercase;
 }
+
+.day-header--date{
+  font-weight: 700;
+}
+
 
 .day-header.weekend, .day-header.weekend  .day-header--day{
   color: #e25a5a;
@@ -73,16 +127,25 @@
   border: none;
 }
 
+.calendar-cell.empty{
+  max-width: 300px;
+  width: 100%;
+}
+
 .calendar-cell.time-table{
   background: #fff;
   margin-top: 0;
   border-radius: 0;
+  font-weight: 700;
+  max-width: 55px;
+  padding-right: 12px;
+  max-width: 60px;
 }
 
-.slot.selected {
-  background-color: #3ec8ff;
-  border-color: #74ddff;
-  font-weight: bold;
+.calendar-cell.slot.selected {
+  background-color: #47d5ff;
+  border-color: #00c3ff;
+  font-weight: 700;
   color: #fff;
   font-size: 12px;
  
@@ -90,13 +153,25 @@
 }
 
 .slot.occupied{
-  background-color: #e7eaef;
+  background-color: transparent;
+  border: none;
   color: transparent;
   font-size: 11px;
-  
+  cursor: default !important;
 }
 
-.slot.occupied:hover{background-color: transparent;}
+.calendar__body .calendar-cell:hover{
+  color: #50acf2;
+  background: #e3f8ff;
+  border-color: #74ddff;
+}
+
+.slot.occupied:hover {
+  background-color: transparent !important;
+  border: none !important;
+  color: transparent !important;
+  pointer-events: none;
+}
 
 .price__info{
   margin-top: 15px;

@@ -1,7 +1,7 @@
 import { generateMockWeek } from "./generateMockWeek";
 
 export const transformEventsToWeek = (events, startDateStr) => {
-  const baseWeek = generateMockWeek(startDateStr); // возьмём слоты по времени
+  const baseWeek = generateMockWeek(startDateStr); 
 
   for (const event of events) {
     const date = event.date_start.slice(0, 10);

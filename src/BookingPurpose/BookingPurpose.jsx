@@ -34,6 +34,7 @@ const BookingPurpose = ({selectedGoal, setSelectedGoal, guestCount, setGuestCoun
                     ))}
                 </div>
             </div>
+            <div className="goal__line"></div>
             <div className="guest__count">
                 <label>Количество человек:</label>
                 <div className="counter">

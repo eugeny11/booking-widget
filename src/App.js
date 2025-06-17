@@ -41,7 +41,10 @@ useEffect(() => {
 
   const [selectedHall, setSelectedHall] = useState(halls[1]);
 
-  const [selectedGoal, setSelectedGoal] = useState({});
+  const [selectedGoal, setSelectedGoal] = useState({
+  id: "photo",
+  label: "фотосъёмка",
+});
   const [guestCount, setGuestCount] = useState(8)
 
   const [selectedServices, setSelectedServices] = useState([])
@@ -86,7 +89,7 @@ useEffect(() => {
         <div className="modal-scroll-area">
           <div className='App'>
             <div className='container'>
-                      <h1>Бронирование зала</h1>
+                      <h1 className='section__title'>Бронирование зала</h1>
                     <HallSlider 
                     halls={halls}
                     selectedHall={selectedHall}

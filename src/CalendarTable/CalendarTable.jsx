@@ -91,50 +91,60 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
 
     }
 
-    return (
-        <div className="calendar__wrapper">
-            <div className="calendar__header">
-                <div className="calendar-cell empty"></div>
-                {week.map(day => (
-                   <div key={day.date} className={`calendar-cell day-header ${isWeekend(day.day) ? 'weekend' : ''}`}>
-                        <div className="day-header--day">{day.day}</div>
-                        <div className="day-header--date">{day.date.slice(8)}</div>
-                    </div>
-                ))}
+   return (
+    <div className="calendar__wrapper">
+      <div className="calendar__grid">
+        <div className="calendar__header">
+          <div className="empty"></div>
+          {week.map(day => (
+            <div
+              key={day.date}
+              className={`calendar-cell day-header ${isWeekend(day.day) ? 'weekend' : ''}`}>
+              <div className="day-header--day">{day.day}</div>
+              <div className="day-header--date">{+day.date.slice(8)}</div>
             </div>
-            <div className="calendar__body">
-                {timeSlots.map((time, rowIndex) => (
-                    <div key={time} className="calendar-row">
-                        <div className="calendar-cell time-table">{time}</div>
-                        {week.map((day, colIndex) => {
-                            const slot = day.slots[rowIndex];
-                            const isSelectedSlot = isSelected(day.date, slot.time);
-                            const timeEnd = timeSlots[rowIndex + 1] || addOneHour(time);
-
-                            return (
-                                <div
-                                key={`${day.date}-${slot.time}`}
-                                className={`calendar-cell slot ${slot.status} ${
-                                    isSelectedSlot ? "selected" : ""
-                                }`}
-                                onClick={() => handleSlotClick(colIndex, rowIndex)}
-                                >
-                                {(isSelectedSlot || slot.status === 'occupied') && timeEnd
-                                    ? `${slot.time} ${timeEnd}`
-                                    : `${slot.price} ₽`}
-                                </div>
-                            );
-                        })}
-
-                    </div>
-                ))}             
-            </div>
-            <div className="calendar__note">
-                <img src={exclamation} alt="exclamation" />
-                <span>При бронировании от 3х часов (с 9 до 20) скидка на аренду студии 20%</span>
-            </div>
+          ))}
         </div>
-    )
+
+        <div className="calendar__main">
+          <div className="calendar__times">
+            {timeSlots.map(time => (
+              <div key={time} className="calendar-cell time-table">{time}</div>
+            ))}
+          </div>
+
+          <div className="calendar__body">
+            {timeSlots.map((time, rowIndex) => (
+              <div key={time} className="calendar-row">
+                {week.map((day, colIndex) => {
+                  const slot = day.slots[rowIndex];
+                  const isSelectedSlot = isSelected(day.date, slot.time);
+                  const timeEnd = timeSlots[rowIndex + 1] || addOneHour(time);
+
+                  return (
+                    <div
+                      key={`${day.date}-${slot.time}`}
+                      className={`calendar-cell slot ${slot.status} ${isSelectedSlot ? "selected" : ""}`}
+                      onClick={() => handleSlotClick(colIndex, rowIndex)}
+                    >
+                      {(isSelectedSlot || slot.status === 'occupied') && timeEnd
+                        ? `${slot.time} ${timeEnd}`
+                        : `${slot.price} ₽`}
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="calendar__note">
+        <img src={exclamation} alt="exclamation" />
+        <span>При бронировании от 3х часов (с 9 до 20) скидка на аренду студии 20%</span>
+      </div>
+    </div>
+  );
 }
 
 export default CalendarTable

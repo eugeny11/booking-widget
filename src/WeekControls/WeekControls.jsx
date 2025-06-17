@@ -6,10 +6,21 @@ import arrowRight from '../images/arrow-right.png'
 const WeekControls = ({ week, onPrev, onNext, initialWeekStart }) => {
   if (!week || week.length === 0) return null;
 
-  const start = week[0].date;
-  const end = week[week.length - 1].date;
+  const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'long',
+  });
+};
 
-  const isAtInitialWeek = start === initialWeekStart;
+const startDateISO = week[0].date;
+const isAtInitialWeek = startDateISO === initialWeekStart;
+
+ const start = formatDate(startDateISO);
+ const end = formatDate(week[week.length - 1].date);
+
+  
 
   return (
     <div className="week__nav">

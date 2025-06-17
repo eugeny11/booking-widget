@@ -1,7 +1,7 @@
 .order-form {
   background: #fff;
   border-radius: 16px;
-  padding-top: 25px;
+  padding-top: 23px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
   border-top: 1px solid #e5e5e9;
 }
@@ -18,9 +18,9 @@
 .order-form__grid {
   display: flex;
   width: 100%;
-  margin-top: 25px;
-  gap: 20px;
-  padding: 25px;
+  margin-top: 18px;
+  gap: 22px;
+  padding: 18px 23px;
   border-top: 1px solid #e5e5e9;
 }
 
@@ -64,6 +64,15 @@
   border-radius: 10px;
   padding: 10px;
   font-size: 14px;
+}
+
+.field-group textarea {
+  resize: none;
+}
+
+.field-group input{
+  max-width: 148px;
+  width: 100%;
 }
 
 .field-group .input-promo {
@@ -269,9 +278,21 @@
 }
 
 @media only screen and (max-width: 520px){
+
+.calendar-cell {
+  font-size: 10px;
+}
+
+.goal-btn{
+  font-size: 15px;
+}
   
 .field-group{
   width: 100%;
+}
+
+.field-group input{
+  max-width: 195px;
 }
 
 .field-group .input-promo {
