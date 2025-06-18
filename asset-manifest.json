@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/booking-widget/static/css/main.a8cf05b3.css",
-    "main.js": "/booking-widget/static/js/main.9c4e4244.js",
+    "main.js": "/booking-widget/static/js/main.3b4d7b29.js",
     "static/js/453.bfa4202f.chunk.js": "/booking-widget/static/js/453.bfa4202f.chunk.js",
     "static/media/hall3.jpg": "/booking-widget/static/media/hall3.3207ac4a5a116567c6ee.jpg",
     "static/media/calibri.ttf": "/booking-widget/static/media/calibri.2eb4a8e3e62e2d790880.ttf",
@@ -15,11 +15,11 @@
     "static/media/services__tripod.jpg": "/booking-widget/static/media/services__tripod.2df2d311a76ad7206070.jpg",
     "index.html": "/booking-widget/index.html",
     "main.a8cf05b3.css.map": "/booking-widget/static/css/main.a8cf05b3.css.map",
-    "main.9c4e4244.js.map": "/booking-widget/static/js/main.9c4e4244.js.map",
+    "main.3b4d7b29.js.map": "/booking-widget/static/js/main.3b4d7b29.js.map",
     "453.bfa4202f.chunk.js.map": "/booking-widget/static/js/453.bfa4202f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a8cf05b3.css",
-    "static/js/main.9c4e4244.js"
+    "static/js/main.3b4d7b29.js"
   ]
 }
