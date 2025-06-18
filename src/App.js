@@ -1,6 +1,7 @@
 import { fetchWeek } from './utils/fetchWeek';
 import { halls } from './HallSlider/hallsData';
 import HallSlider from './HallSlider/HallSlider';
+import { createRoot } from 'react-dom/client';
 import './App.css';
 import CalendarTable from './CalendarTable/CalendarTable';
 import { useEffect, useState } from 'react';
@@ -16,6 +17,12 @@ function App() {
   const [initialWeekStart, setInitialWeekStart] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [currentDate, setCurrentDate] = useState('2025-04-21')
+
+  const app = document.getElementById("app");
+if (app) {
+  const root = createRoot(app);
+  root.render(<App />);
+}
 
   useEffect(() => {
   fetchWeek(currentDate).then((data) => {
