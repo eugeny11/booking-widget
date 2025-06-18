@@ -107,7 +107,7 @@ const OrderForm = ({total, onSubmit}) => {
                       onChange={handlePromoChange}
                     />
                     <div className="promo-valid">
-                     <span>{promoValid === true ? '✔️' : '\u2007'}</span> 
+                     <span>{promoValid === true ? '✓' : '\u2007'}</span> 
                     </div>
               </div> 
              </div>

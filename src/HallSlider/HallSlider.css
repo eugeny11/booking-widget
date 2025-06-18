@@ -3,7 +3,7 @@
   align-items: center;
   position: relative;
   padding: 10px 0;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 15px;
   overflow: hidden;
   width: 100%;
@@ -125,7 +125,4 @@
     display: none;
   }
 
-  .hall-name {
-    margin-bottom: 22px;
-  }
 }

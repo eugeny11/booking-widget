@@ -141,7 +141,7 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
 
       <div className="calendar__note">
         <img src={exclamation} alt="exclamation" />
-        <span>При бронировании от 3х часов (с 9 до 20) скидка на аренду студии 20%</span>
+        <span>При бронировании от 3х часов<span className="note-time"> (с 9 до 20)</span>, скидка на аренду студии 20%</span>
       </div>
     </div>
   );

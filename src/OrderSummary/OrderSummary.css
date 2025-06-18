@@ -49,7 +49,7 @@
 .left__aside{
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
   
 }
 
@@ -146,6 +146,18 @@
   .order-form {
     text-align: left;
   }
+
+  .order__flex .right{
+    padding-left: 0;
+    border-left: none;
+    margin-top: 30px;
+  }
+
+  .order-total {
+   color: #474747;
+   font-weight: 600;
+}
+
 }
 
 @media only screen and (max-width: 420px){
@@ -155,11 +167,10 @@
 }
 
 @media only screen and (max-width: 320px){
+  .order__flex{
+    padding: 10px;
+  }
   .order__flex .right {
     text-align: left;
-  }
-
-  .order__summary{
-    padding: 10px;
   }
 }

@@ -191,7 +191,8 @@
   width: 100%;
   margin: 0 auto;
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 7px;
   padding: 15px 0;
   font-size: 14px;
   color: #616161;
@@ -249,8 +250,14 @@
 }
 
 @media only screen and (max-width: 520px){
+  
+.note-time{
+    display: none;
+    font-size: 13px;
+  }
+
   .calendar__note{
-    padding: 12px;
+    font-size: 11px;
   }
 }
 
@@ -258,8 +265,6 @@
   .calendar-cell{
     font-size: 11px;
   }
-  .calendar__note{
-    font-size: 12px;
-  }
+  
 
 }
