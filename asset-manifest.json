@@ -1,25 +1,21 @@
 {
   "files": {
-    "main.css": "/booking-widget/static/css/main.a8cf05b3.css",
-    "main.js": "/booking-widget/static/js/main.f3c1107b.js",
-    "static/js/453.bfa4202f.chunk.js": "/booking-widget/static/js/453.bfa4202f.chunk.js",
-    "static/media/hall3.jpg": "/booking-widget/static/media/hall3.3207ac4a5a116567c6ee.jpg",
-    "static/media/calibri.ttf": "/booking-widget/static/media/calibri.2eb4a8e3e62e2d790880.ttf",
-    "static/media/calibri_bold.ttf": "/booking-widget/static/media/calibri_bold.952f1ae64afe47a25173.ttf",
-    "static/media/hall2.jpg": "/booking-widget/static/media/hall2.a9023e4fec9cc9a95ddf.jpg",
-    "static/media/hall1.jpg": "/booking-widget/static/media/hall1.01379b166f634548ea00.jpg",
-    "static/media/services__light.jpg": "/booking-widget/static/media/services__light.09cd2a33dd798cba9d04.jpg",
-    "static/media/services__background.jpg": "/booking-widget/static/media/services__background.a1ac8f1b1ede7b1dad72.jpg",
-    "static/media/question.png": "/booking-widget/static/media/question.ca592e0521901767f69c.png",
-    "static/media/exclamation.png": "/booking-widget/static/media/exclamation.ff3ab1a58bb621094012.png",
-    "static/media/services__tripod.jpg": "/booking-widget/static/media/services__tripod.2df2d311a76ad7206070.jpg",
-    "index.html": "/booking-widget/index.html",
-    "main.a8cf05b3.css.map": "/booking-widget/static/css/main.a8cf05b3.css.map",
-    "main.f3c1107b.js.map": "/booking-widget/static/js/main.f3c1107b.js.map",
-    "453.bfa4202f.chunk.js.map": "/booking-widget/static/js/453.bfa4202f.chunk.js.map"
+    "main.css": "./react-app/static/css/main.e6bd5f7e.css",
+    "main.js": "./react-app/static/js/main.fddb7252.js",
+    "static/media/hall3.jpg": "./react-app/static/media/hall3.3207ac4a5a116567c6ee.jpg",
+    "static/media/hall2.jpg": "./react-app/static/media/hall2.a9023e4fec9cc9a95ddf.jpg",
+    "static/media/hall1.jpg": "./react-app/static/media/hall1.01379b166f634548ea00.jpg",
+    "static/media/services__light.jpg": "./react-app/static/media/services__light.09cd2a33dd798cba9d04.jpg",
+    "static/media/services__background.jpg": "./react-app/static/media/services__background.a1ac8f1b1ede7b1dad72.jpg",
+    "static/media/question.png": "./react-app/static/media/question.ca592e0521901767f69c.png",
+    "static/media/exclamation.png": "./react-app/static/media/exclamation.ff3ab1a58bb621094012.png",
+    "static/media/services__tripod.jpg": "./react-app/static/media/services__tripod.2df2d311a76ad7206070.jpg",
+    "index.html": "./react-app/index.html",
+    "main.e6bd5f7e.css.map": "./react-app/static/css/main.e6bd5f7e.css.map",
+    "main.fddb7252.js.map": "./react-app/static/js/main.fddb7252.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8cf05b3.css",
-    "static/js/main.f3c1107b.js"
+    "static/css/main.e6bd5f7e.css",
+    "static/js/main.fddb7252.js"
   ]
 }
