@@ -26,7 +26,7 @@ const BookingPurpose = ({selectedGoal, setSelectedGoal, guestCount, setGuestCoun
                     {goals.map(goal => (
                         <button
                         key={goal.id}
-                        className={`goal-btn ${goal.id === selectedGoal.id ? "active" : ""}`}
+                        className={`goal-btn goal-btn--purpose ${goal.id === selectedGoal.id ? "active" : ""}`}
                         onClick={() => setSelectedGoal({id: goal.id, label:goal.label})}
                         >
                             <span>{goal.label}</span>
@@ -38,7 +38,7 @@ const BookingPurpose = ({selectedGoal, setSelectedGoal, guestCount, setGuestCoun
             <div className="guest__count">
                 <label>Количество человек:</label>
                 <div className="counter">
-                    <button onClick={decrement}>-</button>
+                    <button onClick={decrement}>&#x2212;</button>
                     <span>{guestCount}</span>
                     <button onClick={increment}>+</button>
                 </div>

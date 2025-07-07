@@ -61,8 +61,8 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
         <div className="extra__services">
             <div className="services__header">
                 <h2 className="section__title">Дополнительные услуги</h2>
-                <div className='services__header-up'>
-                    <img className={servicesOpen ? 'rotated' : ''} src={arrowUpDown} alt="arrow-toggle" onClick={toggleServices} />
+                <div className='services__header-up' onClick={toggleServices}>
+                    <img className={servicesOpen ? 'rotated' : ''} src={arrowUpDown} alt="arrow-toggle"  />
                 </div>
             </div>
             
@@ -77,7 +77,7 @@ const ExtraServices = ({selectedServices, setSelectedServices}) => {
                                 <div className="service__item__wrapper">
                                     <div className="service__item" key={service.id}>
                                     
-                                        <img src={service.image} alt={service.title} />
+                                        <img className="service__item-img" src={service.image} alt={service.title} />
                                     <div className="service__flex">
                                                 <div className="service__info__desc">
                                                      <div className="service__info">

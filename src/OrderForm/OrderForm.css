@@ -1,9 +1,11 @@
 .order-form {
   background: #fff;
-  border-radius: 16px;
   padding-top: 23px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
   border-top: 1px solid #e5e5e9;
+  font-weight: 400;
+  border-bottom-left-radius: 19px;
+  border-bottom-right-radius: 19px;
 }
 
 .order-form__header{
@@ -19,21 +21,32 @@
   display: flex;
   width: 100%;
   margin-top: 18px;
-  gap: 22px;
-  padding: 18px 23px;
+  padding-top: 18px;
+  padding-left: 22px;
+  padding-right: 22px;
   border-top: 1px solid #e5e5e9;
 }
 
 .order-form__left {
   display: flex;
+  font-size: 14px;
   flex-wrap: wrap;
-  width: 50%;
-  column-gap: 20px;
-  justify-content: space-between;
+  max-width: 340px;
+  width: 100%;
+  color: #353535;
+}
+
+.order-form__left .field-group:nth-child(2){
+  margin-left: 20px;
+}
+
+.order-form__left .field-group:nth-child(4){
+  margin-left: 20px;
 }
 
 .order-form__right {
   padding-left: 20px;
+  font-size: 14px;
   border-left: 1px solid #e5e5e9;
   align-items: center;
   width: 50%;
@@ -46,10 +59,12 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  width: 45%;
+  max-width: 148px;
+  width: 100%;
 }
 
 .field-group--commentary{
+  max-width: 318px;
   width: 100%;
   margin-right: 0;
 }
@@ -61,9 +76,21 @@
 .field-group input,
 .field-group textarea {
   border: 1px solid #cfcfcf;
+  color: #908c8c;
   border-radius: 10px;
-  padding: 10px;
-  font-size: 14px;
+  padding: 11px 12px;
+  font-size: 13px;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+  outline: none;             
+  box-shadow: none;          
+  border-color: inherit;     
+}
+
+.field-group--commentary textarea{
+  padding: 4px;
 }
 
 .field-group textarea {
@@ -71,7 +98,6 @@
 }
 
 .field-group input{
-  max-width: 148px;
   width: 100%;
 }
 
@@ -100,10 +126,17 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #1f1f1f;
 }
 
 .prepay-switcher label {
   display: block;
+}
+
+.prepay-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f1f1f;
 }
 
 .switcher {
@@ -117,7 +150,12 @@
 }
 
 .switcher button {
-  padding: 8px 12px;
+  width: 60px;
+  padding: 8px 0;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #cfcfcf;
   border-radius: 20px;
   background: #fff;
@@ -139,11 +177,6 @@
   color: #1c1c1c;
 }
 
-.prepay-amount {
-  font-size: 15px;
-  font-weight: 700;
-}
-
 .agreement {
   margin-top: 10px;
 }
@@ -154,7 +187,6 @@
   font-size: 14px;
   line-height: 1.4;
   gap: 10px;
-  cursor: pointer;
   position: relative;
 }
 
@@ -171,6 +203,7 @@
   position: relative;
   flex-shrink: 0;
   margin-top: 2px;
+  cursor: pointer;
 }
 
 .agreement input[type="checkbox"]:checked + .custom-box::after {
@@ -223,26 +256,38 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 630px){
+
   .order-form{
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left;
+    width: 100%;
   }
   .order-form__grid{
     flex-direction: column;
     align-items: center;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .order-form__left {
     flex-direction: column;
     width: 100%;
+    max-width: 360px;
     align-items: center;
   }
 
+  .order-form__left .field-group:nth-child(2){
+  margin-left: 0px;
+  }
+
+.order-form__left .field-group:nth-child(4){
+  margin-left: 0px;
+  }
+
   .field-group{
-    width: 60%;
     flex-direction: row;
     gap: 20px;
     align-items: center;
@@ -253,9 +298,13 @@
 }
 
   .field-group label {
-    min-width: 100px;
+    min-width: 75px;
     display: flex;
     justify-content: end;
+  }
+
+  .field-group input, .field-group textarea {
+    font-size: 16px;
   }
 
   .field-group--commentary{
@@ -263,13 +312,40 @@
   }
 
   .prepay-switcher{
-    justify-content: center;
+    max-width: 357px;
+    width: 100%;
+    height: 49px;
   }
 
   .order-form__right{
     padding-left: 0;
     border-left: none;
     width: 100%;
+    font-size: 15px;
+  }
+
+  .switcher {
+    gap: 15px;
+    max-width: 250px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .switcher__buttons{
+    display: flex;
+    align-items: center;
+    max-width: 177px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .switcher button {
+    max-width: 90px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .switcher button:nth-child(1){
@@ -280,68 +356,94 @@
   border-radius: 0 10px 10px 0;
   border-left: none;
 }
-}
 
-@media only screen and (max-width: 600px){
-    .field-group input {
-      max-width: 180px;
-  }
-}
-
-@media only screen and (max-width: 530px){
-
-.calendar-cell {
+  .calendar-cell {
   font-size: 10px;
-}
-
-.goal-btn{
-  font-size: 15px;
 }
   
 .field-group{
   width: 100%;
+  max-width: 350px;
 }
 
-.field-group input{
-  max-width: 195px;
+.order-form{
+  color: #343434;
+}
+
+.field-group input, .field-group textarea{
+  max-width: 245px;
+  width: 100%;
+}
+
+.field-group--promo{
+  max-width: 355px;
 }
 
 .field-group .input-promo {
- max-width: 145px;
+ max-width: 177px;
  width: 100%;
 }
 
+.promo__flex{
+  gap: 20px;
+  max-width: 250px;
+  justify-content: flex-end;
+}
+
 .promo-valid{
-  height: 47px;
+  height: 50px;
   width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #dde3ff;
+  border: 1px solid #cfcfcf;
+  color: #908c8c;
   border-radius: 10px;
   font-size: 13px;
   }
 
   .promo-valid span{
     transform: translateY(-10%);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+  }
+
+  .agreement{
+    padding-left: 22px;
+    width: 100%;
   }
 
   .agreement label.checkbox-wrapper span {
     text-align: left;
   }
 
-  .field-group input, .field-group textarea {
-    padding: 17px;
+  .agreement-text{
+    max-width: 247px;
+    width: 100%;
   }
 
-  .switcher button {
-    padding: 18px 26px;
+  .field-group input, .field-group textarea {
+    padding: 15px 17px;
   }
 
   .submit-button {
     max-width: 210px;
   }
+}
 
+@media only screen and (max-width: 520px){
+  .agreement .custom-box {
+    margin-top: 5px;
+  }
+
+  .policy-note {
+    max-width: 266px;
+    width: 100%;
+    font-size: 11px;
+  }
 }
 
 @media only screen and (max-width: 450px){
@@ -360,12 +462,63 @@
 }
 
 @media only screen and (max-width: 360px){
+
   .order-form__grid{
     padding: 10px;
+  }
+
+  .promo__flex {
+    justify-content: unset;
+  }
+
+  .field-group .input-promo{
+    max-width: 165px;
+  }
+
+  .switcher {
+    max-width: 270px;
+  }
+
+  .switcher__buttons {
+    justify-content: flex-end;
+  }
+
+      .switcher button {
+        height: 75%;
+        max-width: 70px;
+      }
+
+  .field-group input, .field-group textarea {
+        font-size: 14px;
+    }
+ 
+
+  .agreement {
+    margin-top: 20px;
   }
 
   .switcher button
     {
         padding: 18px 20px;
     }
+
+    .prepay-switcher{
+      flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 330px){
+  .field-group .input-promo {
+        max-width: 137px;
+    }
+}
+
+@media only screen and (max-width: 300px){
+  .field-group .input-promo{
+        max-width: 120px;
+    }
+
+  .agreement label.checkbox-wrapper {
+    font-size: 11px;
+  }
 }

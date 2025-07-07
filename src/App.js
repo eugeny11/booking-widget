@@ -3,7 +3,7 @@ import { halls } from './HallSlider/hallsData';
 import HallSlider from './HallSlider/HallSlider';
 import './App.css';
 import CalendarTable from './CalendarTable/CalendarTable';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import WeekControls from './WeekControls/WeekControls';
 import BookingPurpose from './BookingPurpose/BookingPurpose';
 import ExtraServices from './ExtraServices/ExtraServices';
@@ -33,18 +33,28 @@ useEffect(() => {
   };
 }, []);
 
+const [selectedHall, setSelectedHall] = useState(halls[4]); // клики из слайдера
+
+useEffect(() => {
+  window.setSelectedHallFromWidget = (id) => {
+    console.log('Пришёл hall с id', id);
+    const hall = halls.find(h => h.id === id);
+    if (hall) setSelectedHall(hall);
+  };
+  return () => (window.setSelectedHallFromWidget = null);
+}, []);
+
   const shiftWeek = (days) => {
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() + days);
     setCurrentDate(newDate.toISOString().split("T")[0]);
   }
 
-  const [selectedHall, setSelectedHall] = useState(halls[1]);
-
   const [selectedGoal, setSelectedGoal] = useState({
   id: "photo",
   label: "фотосъёмка",
 });
+
   const [guestCount, setGuestCount] = useState(8)
 
   const [selectedServices, setSelectedServices] = useState([])
@@ -83,13 +93,23 @@ useEffect(() => {
 
 
   return (
-    <div className='modal-overlay'>
+    <div className='modal-overlay hidden'
+      onClick={(e) => {
+      if (e.target.classList.contains("modal-overlay")) {
+        document.querySelector(".modal-overlay").classList.add("hidden");
+      }
+    }}
+    >
       <div className="modal-content">
-        <button className="modal-close" onClick={() => console.log("Закрыть")}>×</button>
+        <button className="modal-close" 
+       onClick={() => {
+          document.querySelector(".modal-overlay").classList.add("hidden");
+          window.startAuto?.();
+        }}>×</button>
         <div className="modal-scroll-area">
           <div className='App'>
             <div className='container'>
-                      <h1 className='section__title'>Бронирование зала</h1>
+                      <h1 className='section__title section__title--main'>Бронирование зала</h1>
                     <HallSlider 
                     halls={halls}
                     selectedHall={selectedHall}

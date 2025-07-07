@@ -1,126 +1,240 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./HallSlider.css";
-import checkmark from '../images/checkmark.png'
+import checkmark from '../images/checkmark.png';
 
 const HallSlider = ({ halls, selectedHall, onSelect }) => {
+  const containerRef = useRef(null);
+  const skipNextEffect = useRef(false);
 
-  const [isJumping, setIsJumping] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [isReady, setIsReady] = useState(false);
+
+// следим за размерами обёртки
+useEffect(() => {
+  const el = containerRef.current;
+  if (!el) return;
+
+  const ro = new ResizeObserver(([entry]) => {
+    const width = entry.contentRect.width;
+    if (width) {
+      setContainerWidth(width);   
+      setIsReady(true);           
+    }
+  });
+
+  ro.observe(el);
+  return () => ro.disconnect();
+}, []);
+
+  const useCardWidth = () => {
+    const getWidth = () => (window.innerWidth <= 520 ? 200 : 194);
+    const [cardWidth, setCardWidth] = useState(getWidth);
+    useEffect(() => {
+      const handleResize = () => setCardWidth(getWidth());
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return cardWidth;
+  };
+
+  const CARD_WIDTH = useCardWidth() + 12;
+ const [renderedHalls, setRenderedHalls] = useState(() => [
+  ...halls, ...halls, ...halls
+]);
+
+const initialIndexInSingle = halls.findIndex(h => h.id === selectedHall?.id);
+const [currentIndex, setCurrentIndex] = useState(() =>
+  halls.length + (initialIndexInSingle !== -1 ? initialIndexInSingle : 0)
+);
+
+  const extendForward = () => {
+   
+    setRenderedHalls((prev) => [...prev, ...halls]);
+  };
+
+/*  const extendBackward = () => {
+ 
+  setRenderedHalls(prev => [...halls, ...prev]);
+};
+ */
+  const scrollToIndex = (index) => {
+    return index * CARD_WIDTH - containerWidth / 2 + CARD_WIDTH / 2;
+  };
+
+  useEffect(() => {
+  const realIndex = currentIndex % halls.length;
+  onSelect(halls[realIndex]);
+}, []);
+
+ const handleClick = (index) => {
+
+  if (index >= renderedHalls.length - 2) {
   
-  const CARD_WIDTH = 205;
-  const duplicated = [...halls, ...halls, ...halls];
-  const middleOffset = halls.length * CARD_WIDTH;
+    extendForward();
+  } else if (index <= 1) {
+    
+    return;
+  }
+  
+  setCurrentIndex(index);
 
-  const [xOffset, setXOffset] = useState(middleOffset);
-
-  const wrapOffset = (rawOffset) => {
-    const totalWidth = halls.length * CARD_WIDTH;
-    const maxOffset = totalWidth * 2;
-    let offset = rawOffset;
-
-    if (offset >= maxOffset) offset -= totalWidth;
-    if (offset < totalWidth) offset += totalWidth;
-
-    return offset;
-  };
-
-  const getRealIndex = (offset) => {
-    const virtualIndex = Math.round((offset - middleOffset) / CARD_WIDTH);
-    return ((virtualIndex % halls.length) + halls.length) % halls.length;
-  };
+  const realIndex = index % halls.length;
+  skipNextEffect.current = true;
+  onSelect(halls[realIndex]);
+};
 
   const goTo = (direction) => {
-    setXOffset(prev => {
-      const snapped = Math.round((prev - middleOffset) / CARD_WIDTH);
-      const nextIndex = snapped + direction;
-      const offset = wrapOffset(middleOffset + nextIndex * CARD_WIDTH);
-      const realIndex = ((nextIndex % halls.length) + halls.length) % halls.length;
+  let newIndex = currentIndex + direction;
 
-      onSelect(halls[realIndex]);
-      return offset;
-    });
-  };
-
-  const handleClick = (index) => {
-    const targetIndex = index % halls.length;
-
-    setXOffset(() => {
-      const offset = wrapOffset(middleOffset + targetIndex * CARD_WIDTH);
-      onSelect(halls[targetIndex]);
-      return offset;
-    });
-  };
-
-  const handleTransitionEnd = () => {
-  const totalWidth = halls.length * CARD_WIDTH;
-  const maxOffset = totalWidth * 2;
-
-  if (xOffset >= maxOffset - CARD_WIDTH || xOffset <= totalWidth) {
-    const realIndex = getRealIndex(xOffset);
-    const newOffset = middleOffset + (realIndex * CARD_WIDTH);
-    setIsJumping(true); 
-    setXOffset(newOffset);
-
-    setTimeout(() => setIsJumping(false), 20); 
+  if (newIndex >= renderedHalls.length - 2) {
+    // дошли до конца – подливаем справа
+    extendForward();
+    newIndex -= halls.length;       // «переносим» индекс назад
+  } else if (newIndex < 0)  {
+  
+    // не даём уйти дальше влево — просто остаёмся на месте
+    return;
   }
+
+  newIndex = Math.max(0, newIndex);
+  setCurrentIndex(newIndex);
+
+  const realIndex = newIndex % halls.length;
+  skipNextEffect.current = true;
+  onSelect(halls[realIndex]);
 };
 
   const touchStartX = useRef(null);
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
 
-const handleTouchStart = (e) => {
-  touchStartX.current = e.touches[0].clientX;
-};
+  const handleSwipe = (direction) => {
+  let newIndex = currentIndex + direction;
 
-const handleTouchEnd = (e) => {
-  if (touchStartX.current === null) return;
-
-  const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-
-  if (Math.abs(deltaX) > 50) { 
-    if (deltaX > 0) {
-      goTo(-1); 
-    } else {
-      goTo(1); 
+  if (direction > 0) {
+    if (newIndex >= renderedHalls.length - halls.length) {
+      console.log("extendForward before right edge");
+      extendForward();
+      // НЕ переносим newIndex назад — даём подлиться и спокойно свайпнуть
     }
   }
 
+  if (direction < 0) {
+    if (newIndex < halls.length) {
+      console.log("blocked at left edge");
+      return;  // блокируем движение влево за край
+    }
+  }
+
+  setCurrentIndex(newIndex);
+
+  const realIndex = newIndex % halls.length;
+  skipNextEffect.current = true;
+  onSelect(halls[realIndex]);
+};
+
+
+const handleTouchEnd = (e) => {
+  if (touchStartX.current === null) return;
+  const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+  if (Math.abs(deltaX) > 50) {
+    handleSwipe(deltaX > 0 ? -1 : 1);
+  }
   touchStartX.current = null;
 };
 
 
+useEffect(() => {
+  if (!selectedHall) return;
+
+  if (skipNextEffect.current) {
+  skipNextEffect.current = false;
+  
+  return;
+}
+
+  // все позиции нужного id в текущем renderedHalls
+  const positions = [];
+  renderedHalls.forEach((h, i) => {
+    if (h.id === selectedHall.id) positions.push(i);
+  });
+
+  
+
+  /* 1. карточки ещё нет – доращиваем вперёд и ждём нового рендера */
+  if (!positions.length) {
+    
+    setRenderedHalls(prev => [...prev, ...halls]);
+    
+    return;
+  }
+
+  /* 2. выбираем ближайший индекс к текущему положению каретки */
+  let nearest = positions.reduce((a, b) =>
+    Math.abs(b - currentIndex) < Math.abs(a - currentIndex) ? b : a
+  , positions[0]);
+  
+  if (nearest < halls.length) {
+   
+    //  одна вставка слева + сдвиг индекса на ту же длину
+    setRenderedHalls(prev => [...halls, ...prev]);
+    nearest += halls.length;
+  }
+
+
+  /* 4. если слишком близко к правому краю – добавляем партию справа */
+  if (nearest > renderedHalls.length - halls.length - 1) {
+ 
+    setRenderedHalls(prev => [...prev, ...halls]);
+  }
+
+  /* 5. наконец, мягко переводим каретку к найденному индексу */
+  if (nearest !== currentIndex) {
+   
+    requestAnimationFrame(() => setCurrentIndex(nearest));
+  }
+
+}, [selectedHall, renderedHalls, currentIndex, halls]);
+
+
+
+
+
   return (
     <div className="hall__slider__wrapper">
-      <button className="scroll-btn left" onClick={() => goTo(-1)}>←</button>
-
-      <div className="hall__slider__container"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+      <div
+        className="hall__slider__container"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        ref={containerRef}
       >
         <div
           className="hall__slider"
           style={{
-            transform: `translateX(-${xOffset}px)`,
-            transition: "transform 0.3s ease",
+            transform: `translateX(-${scrollToIndex(currentIndex)}px)`,
+             transition: isReady ? "transform 0.3s ease" : "none"
           }}
-           onTransitionEnd={handleTransitionEnd}
         >
-          {duplicated.map((hall, index) => (
+          {renderedHalls.map((hall, index) => (
             <div
               key={index}
               className={`hall-card ${hall.id === selectedHall.id ? "selected" : ""}`}
               onClick={() => handleClick(index)}
             >
-             <div className="hall-image">
+              <div className="hall-image">
                 <img className="hall-card-img" src={hall.image} alt={hall.name} />
-            </div>
+              </div>
               <div className="hall-name">
-               <span>{hall.name}</span>  {hall.id === selectedHall.id && <img src={checkmark} alt="checkmark"/>}
+                <span>{hall.name}</span>
+                {hall.id === selectedHall.id && (
+                  <img src={checkmark} alt="checkmark" />
+                )}
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      <button className="scroll-btn right" onClick={() => goTo(1)}>→</button>
     </div>
   );
 };

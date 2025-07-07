@@ -1,33 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap');
-
-@font-face {
-  font-family: 'Calibri';
-  src: url('../src/fonts/Calibri/calibri.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Calibri';
-  src: url('../src/fonts/Calibri/calibri_bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Calibri', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Manrope', sans-serif;
 }
 
 body.modal-open {
   overflow: hidden !important;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 *,
@@ -50,6 +29,10 @@ a {
 
 ul, ol {
     list-style: none; 
+}
+
+button {
+  font-family: 'Manrope', sans-serif;
 }
 
 p, span, strong, em, h1, h2, h3, h4, h5, h6, label, div {

@@ -1,15 +1,15 @@
 .order__wrapper{
   width: 100%;
   background: #f1f3fb;
-  padding: 10px 8px;
+  padding: 10px 9px;
   display: flex;
   justify-content: center;
 }
 
 .order__header{
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 15px;
+  padding-top: 21px;
+  padding-bottom: 20px;
   padding-left: 23px;
   padding-right: 23px;
 }
@@ -20,7 +20,7 @@
   align-items: start;
   border-top: 1px solid #dcdee3;
   border: 1px solid #e0e0e0;
-  border-radius: 18px;
+  border-radius: 17px;
   background-color: #fff;
   max-width: 695px;
   width: 100%;
@@ -34,33 +34,35 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-  font-family: sans-serif;
+  align-items: flex-start;
 }
 
 .order__flex .left {
-  width: 45%;
+  max-width: 332px;
+  font-size: 14px;
+  width: 100%;
   display: flex;
   align-items: start;
   gap: 17px;
 }
 
 .left__aside{
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  
+  gap: 8px;
+  color: #6a737b; 
 }
 
 .order-hall-name {
-  font-weight: 500;
+  font-weight: 700;
+  color: #464653;
 }
 
 .order__flex .left img {
   width: 100px;
   height: 100px;
-  border-radius: 14px / 12px;
+  border-radius: 12px;
   object-fit: cover;
   margin-bottom: 8px;
 }
@@ -73,18 +75,18 @@
   width: 50%;
   padding-left: 20px;
   border-left: 1px solid #e5e5e9;
-  text-align: right;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  color: #4d4d4d;
+  font-size: 14px;
+  color: #464653;
 }
 
 .order__flex .right div {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px dashed #e5e5e9;
-  padding-bottom: 13px;
+  padding-bottom: 12px;
 }
 
 .order__flex .right div:last-child {
@@ -100,18 +102,23 @@
   color: #76798c;
 }
 
+.order-guest{
+  margin-top: -4px;
+}
+
 .order-date-time{
   display: flex;
   flex-direction: column;
-  gap:18px;
+  gap:6px;
 }
 
-.order-total {
-   color: #1f1f1f;
+.order-total{
+  font-weight: 700;
+  color: #464653;
 }
 
-.order-total-number{
-  font-weight: 600;
+.order-total-number {
+  color: #1f1f1f;
 }
 
 .goal-name{
@@ -152,11 +159,6 @@
     border-left: none;
     margin-top: 30px;
   }
-
-  .order-total {
-   color: #474747;
-   font-weight: 600;
-}
 
 }
 

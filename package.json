@@ -2,7 +2,7 @@
   "name": "booking_widget_project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://eugeny11.github.io/booking-widget",
+  "homepage": "./react-app",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

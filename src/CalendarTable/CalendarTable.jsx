@@ -8,6 +8,16 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
     const timeSlots = week[0].slots.map(slot => slot.time);
 
     const [priceInfo, setPriceInfo] = useState(null);
+    const [hoveredSlot, setHoveredSlot] = useState(null);
+
+    const renderTimeWithSup = (time) => {
+  const [hours, minutes] = time.split(':');
+  return (
+    <>
+      {hours}<sup className="time-sup">{minutes}</sup>
+    </>
+  );
+};
 
     const isSelected = (date, time) => {
         return selectedSlots.some(slot => slot.date === date && slot.time === time)
@@ -85,10 +95,8 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
             if (newSelectedSlots.length === 0){
                 setPriceInfo(null)
             }
+            setHoveredSlot(null);
         }
-
-        
-
     }
 
    return (
@@ -108,9 +116,12 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
 
         <div className="calendar__main">
           <div className="calendar__times">
-            {timeSlots.map(time => (
-              <div key={time} className="calendar-cell time-table">{time}</div>
-            ))}
+              {timeSlots.map(time => (
+                <div key={time} className="calendar-cell time-table">
+                  <span className="desktop-time">{time}</span>
+                  <span className="mobile-time">{renderTimeWithSup(time)}</span>
+                </div>
+              ))}
           </div>
 
           <div className="calendar__body">
@@ -124,12 +135,37 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
                   return (
                     <div
                       key={`${day.date}-${slot.time}`}
-                      className={`calendar-cell slot ${slot.status} ${isSelectedSlot ? "selected" : ""}`}
+                      className={`calendar-cell slot ${isSelectedSlot ? "selected" : slot.status}`}
                       onClick={() => handleSlotClick(colIndex, rowIndex)}
+                      onMouseEnter={() => setHoveredSlot({ colIndex, rowIndex })}
+                      onMouseLeave={() => setHoveredSlot(null)}
                     >
-                      {(isSelectedSlot || slot.status === 'occupied') && timeEnd
-                        ? `${slot.time} ${timeEnd}`
-                        : `${slot.price} ₽`}
+                          {isSelectedSlot
+                            ? (
+                              <>
+                                <span className="desktop-time">
+                                  {slot.time} - {timeEnd}
+                                </span>
+                                <span className="mobile-time">
+                                  {renderTimeWithSup(slot.time)} - {renderTimeWithSup(timeEnd)}
+                                </span>
+                              </>
+                            )
+                            : (hoveredSlot &&
+                                hoveredSlot.colIndex === colIndex &&
+                                hoveredSlot.rowIndex === rowIndex)
+                              ? (
+                                <>
+                                  <span className="desktop-time">
+                                    {slot.time} - {timeEnd}
+                                  </span>
+                                  <span className="mobile-time">
+                                    {renderTimeWithSup(slot.time)} - {renderTimeWithSup(timeEnd)}
+                                  </span>
+                                </>
+                              )
+                              : `${slot.price} ₽`
+                          }
                     </div>
                   );
                 })}

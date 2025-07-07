@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import checkmark_grey from '../images/checkmark_grey.png'
 import './OrderForm.css'
 
 const OrderForm = ({total, onSubmit}) => {
@@ -35,6 +36,19 @@ const OrderForm = ({total, onSubmit}) => {
         }
 
         onSubmit({...formData})
+
+        setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        promo: "",
+        comment: "",
+        prepayType: "50",
+        agreed: false,
+      });
+
+  setPromo("");
+  setPromoValid(null);
     }
 
     const calculatedPrepay = Math.round(
@@ -107,7 +121,7 @@ const OrderForm = ({total, onSubmit}) => {
                       onChange={handlePromoChange}
                     />
                     <div className="promo-valid">
-                     <span>{promoValid === true ? '✓' : '\u2007'}</span> 
+                     <span>{promoValid === true ? <img src={checkmark_grey} alt="checkmark" /> : '\u2007'}</span> 
                     </div>
               </div> 
              </div>
@@ -121,14 +135,13 @@ const OrderForm = ({total, onSubmit}) => {
               name="comment"
               value={formData.comment}
               onChange={handleChange}
-              rows="2"
             />
           </div>
         </div>
 
         <div className="order-form__right">
           <div className="prepay-switcher">
-            <label>Предоплата:</label>
+            <label>Предоплата</label>
             <div className="switcher">
               <div className="switcher__buttons">
                 <button
@@ -147,7 +160,7 @@ const OrderForm = ({total, onSubmit}) => {
               </button>
               </div>
               
-               <div className="prepay-amount">{calculatedPrepay.toLocaleString()} ₽</div>
+               <div className="prepay-amount">{calculatedPrepay.toLocaleString('ru-RU')} ₽</div>
             </div>
            
           </div>
@@ -161,7 +174,7 @@ const OrderForm = ({total, onSubmit}) => {
                 onChange={handleChange}
               />
               <span className="custom-box"></span>
-              <span>
+              <span className="agreement-text">
                 Я ознакомлен с <a href="#">правилами студии</a> и <a href="#">правилами бронирования</a>
               </span>
             </label>

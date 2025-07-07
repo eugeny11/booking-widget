@@ -11,6 +11,11 @@ const OrderSummary = ({hall, selectedSlots, selectedServices, guestCount, getTim
 const first = sortedSlots[0];
 const last = sortedSlots[sortedSlots.length - 1];
 
+const formatDate = (dateStr) => {
+  const [year, month, day] = dateStr.split('-');
+  return `${day}.${month}.${year}`;
+};
+
 
    return(
     <div className="order__wrapper">
@@ -28,7 +33,7 @@ const last = sortedSlots[sortedSlots.length - 1];
                 {selectedSlots.length > 0 ? (
                     
                     <div className="order-date-time">
-                        <div>Дата: {first.date}</div>
+                        <div>Дата: {formatDate(first.date)}</div>
                         <div>
                            Время: {first.time} – {getTimeEnd(last.time)}
                         </div>
