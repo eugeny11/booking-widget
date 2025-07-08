@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./react-app/static/css/main.e6bd5f7e.css",
-    "main.js": "./react-app/static/js/main.fddb7252.js",
+    "main.css": "./react-app/static/css/main.a070db98.css",
+    "main.js": "./react-app/static/js/main.679d0ceb.js",
     "static/media/hall3.jpg": "./react-app/static/media/hall3.3207ac4a5a116567c6ee.jpg",
     "static/media/hall2.jpg": "./react-app/static/media/hall2.a9023e4fec9cc9a95ddf.jpg",
     "static/media/hall1.jpg": "./react-app/static/media/hall1.01379b166f634548ea00.jpg",
@@ -11,11 +11,11 @@
     "static/media/exclamation.png": "./react-app/static/media/exclamation.ff3ab1a58bb621094012.png",
     "static/media/services__tripod.jpg": "./react-app/static/media/services__tripod.2df2d311a76ad7206070.jpg",
     "index.html": "./react-app/index.html",
-    "main.e6bd5f7e.css.map": "./react-app/static/css/main.e6bd5f7e.css.map",
-    "main.fddb7252.js.map": "./react-app/static/js/main.fddb7252.js.map"
+    "main.a070db98.css.map": "./react-app/static/css/main.a070db98.css.map",
+    "main.679d0ceb.js.map": "./react-app/static/js/main.679d0ceb.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6bd5f7e.css",
-    "static/js/main.fddb7252.js"
+    "static/css/main.a070db98.css",
+    "static/js/main.679d0ceb.js"
   ]
 }
