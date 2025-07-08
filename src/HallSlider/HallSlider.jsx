@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./HallSlider.css";
-import checkmark from '../images/checkmark.png';
+import checkmark from '../images/checkmark_grey__new.png';
 
 const HallSlider = ({ halls, selectedHall, onSelect }) => {
   const containerRef = useRef(null);
@@ -27,7 +27,7 @@ useEffect(() => {
 }, []);
 
   const useCardWidth = () => {
-    const getWidth = () => (window.innerWidth <= 520 ? 200 : 194);
+    const getWidth = () => (window.innerWidth <= 520 ? 200 : 195);
     const [cardWidth, setCardWidth] = useState(getWidth);
     useEffect(() => {
       const handleResize = () => setCardWidth(getWidth());
@@ -57,9 +57,7 @@ const [currentIndex, setCurrentIndex] = useState(() =>
   setRenderedHalls(prev => [...halls, ...prev]);
 };
  */
-  const scrollToIndex = (index) => {
-    return index * CARD_WIDTH - containerWidth / 2 + CARD_WIDTH / 2;
-  };
+  const scrollToIndex = (index) => index * CARD_WIDTH;
 
   useEffect(() => {
   const realIndex = currentIndex % halls.length;

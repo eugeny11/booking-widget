@@ -55,49 +55,57 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
     };
 
     const handleSlotClick = async (dayIndex, slotIndex) => {
-        const clickedSlot = week[dayIndex].slots[slotIndex];
+  const clickedSlot = week[dayIndex].slots[slotIndex];
 
-        if (clickedSlot.status !== 'free') return;
+  if (clickedSlot.status !== 'free') return;
 
-        const slot = {
-            date: week[dayIndex].date,
-            time: clickedSlot.time,
-            price: clickedSlot.price,
-            dayIndex,
-            slotIndex
-        }
+  const slot = {
+    date: week[dayIndex].date,
+    time: clickedSlot.time,
+    price: clickedSlot.price,
+    dayIndex,
+    slotIndex,
+  };
 
-        const alreadySelected = isSelected(slot.date, slot.time);
+  const alreadySelected = isSelected(slot.date, slot.time);
 
-        let newSelectedSlots;
-       if (alreadySelected) {
-          
-            if (isMiddleSlot(slot, selectedSlots)) {
-                newSelectedSlots = [];
-            } else {
-                // иначе просто снимаем его (если это крайний)
-                newSelectedSlots = selectedSlots.filter(
-                    s => !(s.date === slot.date && s.time === slot.time)
-                );
-            }
-        }else if(canAddSlot(slot, selectedSlots)){
-            newSelectedSlots = [...selectedSlots, slot]
-        } else {
-            newSelectedSlots = [slot]
-        }
-
-        setSelectedSlots(newSelectedSlots)
-
-        if(!alreadySelected){
-            const response = fetchPrice(slot.date, slot.time);
-            setPriceInfo(response.price)
-        } else {
-            if (newSelectedSlots.length === 0){
-                setPriceInfo(null)
-            }
-            setHoveredSlot(null);
-        }
+  let newSelectedSlots;
+  if (alreadySelected) {
+    if (isMiddleSlot(slot, selectedSlots)) {
+      newSelectedSlots = [];
+    } else {
+      newSelectedSlots = selectedSlots.filter(
+        (s) => !(s.date === slot.date && s.time === slot.time)
+      );
     }
+  } else if (canAddSlot(slot, selectedSlots)) {
+    newSelectedSlots = [...selectedSlots, slot];
+  } else {
+    newSelectedSlots = [slot];
+  }
+
+  console.log("➡️ Слоты после клика:", newSelectedSlots);
+
+  setSelectedSlots(newSelectedSlots);
+
+  if (!alreadySelected) {
+    try {
+      const response = await fetchPrice(slot.date, slot.time);
+      console.log("💰 Цена с сервера:", response.price);
+      setPriceInfo(response.price);
+    } catch (error) {
+      console.error("🚨 Ошибка загрузки цены:", error);
+      setPriceInfo(null);
+    }
+  } else {
+    if (newSelectedSlots.length === 0) {
+      console.log("ℹ️ Все слоты сняты, очищаю цену");
+      setPriceInfo(null);
+    }
+    setHoveredSlot(null);
+  }
+};
+
 
    return (
     <div className="calendar__wrapper">

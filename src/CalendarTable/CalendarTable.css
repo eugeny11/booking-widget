@@ -6,7 +6,7 @@
   overflow-x: auto;
   background: #fff;
   color: #1f1f1f;
-  border: 1px solid #f2f2f4;
+  border-bottom: 1px solid #e6e6e8;
 }
 
 .calendar__grid {

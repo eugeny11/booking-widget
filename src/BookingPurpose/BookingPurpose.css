@@ -234,14 +234,16 @@
 }
 
 @media only screen and (max-width: 450px){
-  .goal__selector{
-    flex-direction: column;
-  }
-
   .goal__options{
     margin-left: 0;
-    margin-top: 15px;
   }
+
+      .goal-btn {
+        max-width: 90px;
+        font-size: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }
 
 @media only screen and (max-width: 350px){
@@ -251,38 +253,25 @@
   }
 
   .goal-btn {
-        padding: 10px;
-        max-width: 110px;
+        max-width: 80px;
+        font-size: 11px;
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
-    
-  .goal__options{
-    flex-direction: column;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-  }
 
-  .goal-btn:nth-child(1){
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
-
-  .goal-btn:nth-child(2){
-    border-left: none;
-    border-right: none;
-    border-top: 2px solid #dcdee3;
-    border-bottom: 2px solid #dcdee3;
-  }
-
-  .goal-btn:nth-child(3){
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+  .goal__selector label, .guest__count label {
+    font-size: 13px;
   }
 
   .guest__count{
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media only screen and (max-width: 320px){
+  .goal__selector {
+    flex-direction: column
   }
 }

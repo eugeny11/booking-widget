@@ -8,17 +8,21 @@
   overflow: hidden;
   width: 100%;
   background: #f1f3fb;
-  border: 1px solid #dedede;
+  border-top: 1px solid #e6e6e8;
+  border-bottom: 1px solid #e6e6e8;
 }
 
 .hall__slider__container {
   overflow: hidden;
   flex-grow: 1;
+  padding-left: 1px;
 }
 
 .hall__slider {
   display: flex;
   gap: 12px;
+   padding-left: calc(50% - 97px); 
+  padding-right: calc(50% - 97px);
 }
 
 .hall-card {
@@ -124,6 +128,7 @@
 }
 
 @media only screen and (max-width: 520px){
+  
   .hall-card{
     flex: 1 0 200px;
     max-width: 200px;

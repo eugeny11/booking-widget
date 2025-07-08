@@ -28,9 +28,9 @@
   z-index: 9999;
 }
 
-.modal-overlay.hidden {
+/* .modal-overlay.hidden {
   display: none;
-}    
+}     */
   
  
 .modal-content {
