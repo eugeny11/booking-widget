@@ -21,8 +21,8 @@
 .hall__slider {
   display: flex;
   gap: 12px;
-   padding-left: calc(50% - 97px); 
-  padding-right: calc(50% - 97px);
+   padding-left: calc(50% - 83px); 
+  padding-right: calc(50% - 83px);
 }
 
 .hall-card {
@@ -128,6 +128,14 @@
 }
 
 @media only screen and (max-width: 520px){
+
+  .hall__slider {
+  display: flex;
+  gap: 12px;
+   padding-left: calc(50% - 97px); 
+  padding-right: calc(50% - 97px);
+}
+
   
   .hall-card{
     flex: 1 0 200px;
