@@ -5,7 +5,7 @@
   padding: 0 18px;
   overflow-x: auto;
   background: #fff;
-  color: #1f1f1f;
+  border-top: 1px solid #f2f2f4;
   border-bottom: 1px solid #e6e6e8;
 }
 
@@ -40,8 +40,11 @@
 .calendar__body{
   max-width: 608px;
    border-radius: 10px;
-   border: 2px solid #dde4fd;
-  padding: 0 2px;
+   border: 1px solid #d3d3d3;
+  padding-top: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
   width: 100%;
   background: #f1f3fb;
   display: flex;
@@ -67,7 +70,7 @@
 
 .calendar-row {
   display: flex;
-  gap: 3px;
+  gap: 2px;
 }
 
 .calendar-cell {
@@ -79,7 +82,7 @@
   height: 100%;
   border-radius: 10px;
   font-size: 12px;
-  border: 1px solid #d6d6d7;
+  border: 1px solid #d3d3d3;
   color: #616161;
   word-wrap: break-word;
   white-space: normal;
@@ -89,6 +92,8 @@
   align-items: center;
   cursor: pointer;
 }
+
+
 
 .calendar__body .calendar-cell {
   margin-top: 2px;
@@ -101,7 +106,6 @@
 .calendar-cell.slot * {
   cursor: inherit;
 }
-
 
 .day-header {
   font-weight: 700;
@@ -263,7 +267,6 @@
   .calendar__body{
     padding: 0;
     border-radius: 0px;
-    border: 1px solid #dde4fd;
     max-width: 336px;
     width: 100%;
     max-height: 480px;
@@ -334,15 +337,24 @@
   .calendar-cell{
     margin-top: 0;
     border-radius: 0;
-    border: 1px solid #d3d3d3;
+     border: none;
+    border-right: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
     width: 49px;
     height: 41px;
   }
 
   .slot.occupied{
-    border: 1px solid #d3d3d3;
+    border: none;
+    border-right: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
     height: 41px;
   }
+
+  .calendar-row .calendar-cell:last-child {
+    border-right: none;
+  }
+
 
   .purpose__block{
     align-items: center;

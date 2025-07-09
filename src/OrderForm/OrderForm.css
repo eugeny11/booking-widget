@@ -224,12 +224,13 @@
 
 
 .submit-button {
-  padding: 10px 0;
+  padding: 17px 0;
   display: flex;
   justify-content: center;
   max-width: 170px;
   width: 100%;
-  border-radius: 18px;
+  border-radius: 30px;
+  font-size: 13px;
   background: #eaf7ff;
   color: #5962d1;
   font-weight: bold;
@@ -246,7 +247,7 @@
   border: 1px solid #dce3ff;
   background: #f1f3fb;
   cursor: not-allowed;
-  color: #9fa2c6;
+  color: #918f8d;
 }
 
 .policy-note {
@@ -375,7 +376,8 @@
 }
 
 .field-group--promo{
-  max-width: 355px;
+  max-width: 356px;
+  gap: 23px;
 }
 
 .field-group .input-promo {
@@ -384,13 +386,15 @@
 }
 
 .promo__flex{
-  gap: 20px;
   max-width: 250px;
-  justify-content: flex-end;
+  justify-content: unset;
+  gap: 18px;
+  align-items: center;     
+  height: 48px;  
 }
 
 .promo-valid{
-  height: 50px;
+  height: 100%;
   width: 50px;
   display: flex;
   justify-content: center;
@@ -401,6 +405,16 @@
   font-size: 13px;
   }
 
+  .field-group .input-promo {
+    height: 100%;            
+  padding: 0 14px;      
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #cfcfcf;
+  display: flex;
+  align-items: center;
+  }
+
   .promo-valid span{
     transform: translateY(-10%);
     font-size: 20px;
@@ -408,6 +422,13 @@
     align-items: center;
     justify-content: center;
     width: 20px;
+  }
+
+  .prepay-amount{
+     height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
   }
 
   .agreement{
@@ -425,7 +446,7 @@
   }
 
   .field-group input, .field-group textarea {
-    padding: 15px 17px;
+    padding: 14px 17px;
   }
 
   .submit-button {

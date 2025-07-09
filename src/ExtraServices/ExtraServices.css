@@ -2,7 +2,8 @@
   width: 100%;
   background: #fff;
   padding: 13px 0;
-  border: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 
 .extra__services h3 {

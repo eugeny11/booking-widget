@@ -81,7 +81,7 @@ const [currentIndex, setCurrentIndex] = useState(() =>
   onSelect(halls[realIndex]);
 };
 
-  const goTo = (direction) => {
+/*   const goTo = (direction) => {
   let newIndex = currentIndex + direction;
 
   if (newIndex >= renderedHalls.length - 2) {
@@ -100,7 +100,7 @@ const [currentIndex, setCurrentIndex] = useState(() =>
   const realIndex = newIndex % halls.length;
   skipNextEffect.current = true;
   onSelect(halls[realIndex]);
-};
+}; */
 
   const touchStartX = useRef(null);
   const handleTouchStart = (e) => {

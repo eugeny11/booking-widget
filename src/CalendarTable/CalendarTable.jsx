@@ -84,7 +84,7 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
     newSelectedSlots = [slot];
   }
 
-  console.log("➡️ Слоты после клика:", newSelectedSlots);
+ /*  console.log("➡️ Слоты после клика:", newSelectedSlots); */
 
   setSelectedSlots(newSelectedSlots);
 
@@ -94,12 +94,12 @@ const CalendarTable = ({week, selectedSlots, setSelectedSlots, getTimeEnd}) => {
       console.log("💰 Цена с сервера:", response.price);
       setPriceInfo(response.price);
     } catch (error) {
-      console.error("🚨 Ошибка загрузки цены:", error);
+      /* console.error("🚨 Ошибка загрузки цены:", error); */
       setPriceInfo(null);
     }
   } else {
     if (newSelectedSlots.length === 0) {
-      console.log("ℹ️ Все слоты сняты, очищаю цену");
+     /*  console.log("ℹ️ Все слоты сняты, очищаю цену"); */
       setPriceInfo(null);
     }
     setHoveredSlot(null);
